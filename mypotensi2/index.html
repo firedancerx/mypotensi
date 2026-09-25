@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="description" content="20 sebab memilih Pusat Tuisyen Potensi.">
+  <title>Pusat Tuisyen Potensi - 20 Sebab Memilih Kami</title>
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#111317;
+      --gold:#f7a827;
+      --red:#e61c24;
+      --white:#ffffff;
+      --muted:#9aa2ae;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{min-height:100%}
+    body{
+      background:
+        radial-gradient(circle at 50% 0%,rgba(247,168,39,.08),transparent 35%),
+        var(--bg);
+      color:var(--white);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100dvh;
+      padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));
+    }
+    button,a{-webkit-tap-highlight-color:transparent}
+    .slider-viewport{
+      position:relative;
+      width:min(100%,440px);
+      height:min(800px,calc(100dvh - 24px));
+      min-height:620px;
+      border-radius:28px;
+      overflow:hidden;
+      background:var(--panel);
+      box-shadow:0 25px 60px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.1);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      isolation:isolate;
+    }
+    .slide-bg-img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-3;
+      filter:brightness(.42) saturate(1.1);
+      opacity:1;
+      transform:scale(1.015);
+      transition:opacity .28s ease,transform .55s ease;
+    }
+    .slide-bg-img.is-changing{opacity:.18;transform:scale(1.04)}
+    .slide-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,rgba(10,12,16,.9) 0%,rgba(10,12,16,.42) 29%,rgba(10,12,16,.62) 65%,rgba(10,12,16,.97) 100%),
+        radial-gradient(circle at 50% 46%,transparent 0 32%,rgba(0,0,0,.18) 76%);
+      z-index:-2;
+      pointer-events:none;
+    }
+    .header-bar,.center-hero,.footer-bar{position:relative;z-index:2}
+    .header-bar{
+      padding:20px 20px 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand-wrap{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+    .brand-mark{
+      width:39px;height:39px;border:2px solid rgba(255,255,255,.86);border-radius:50%;
+      display:grid;place-items:center;flex:0 0 auto;box-shadow:inset 0 0 0 4px rgba(255,255,255,.035)
+    }
+    .brand-mark span{color:#ff552f;font-size:20px;line-height:1}
+    .brand-copy{display:flex;flex-direction:column;line-height:1}
+    .brand-copy strong{font-size:15px;letter-spacing:.3px}
+    .brand-copy strong em{font-style:normal;color:#ff552f}
+    .brand-copy small{font-size:9.5px;color:rgba(255,255,255,.68);margin-top:5px}
+    .hamburger-button{
+      width:38px;height:38px;border:0;background:transparent;display:grid;place-content:center;gap:5px;cursor:pointer;border-radius:10px
+    }
+    .hamburger-button:hover{background:rgba(255,255,255,.06)}
+    .hamburger-button span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+    .center-hero{
+      padding:0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      width:100%;
+      min-height:0;
+      flex:1;
+    }
+    .nav-arrow-btn{
+      background:transparent;
+      border:none;
+      color:rgba(255,255,255,.72);
+      font-size:36px;
+      font-weight:300;
+      cursor:pointer;
+      padding:14px 5px;
+      user-select:none;
+      line-height:1;
+      transition:color .2s ease,transform .1s ease;
+      flex:0 0 auto;
+    }
+    .nav-arrow-btn:hover,.nav-arrow-btn:focus-visible{color:#fff;transform:scale(1.12)}
+    .hero-content{
+      flex:1;
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      padding:0 4px;
+    }
+    .badge-pill{
+      display:inline-block;
+      font-size:10.5px;
+      font-weight:700;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:var(--gold);
+      background:rgba(247,168,39,.14);
+      border:1px solid rgba(247,168,39,.38);
+      padding:4px 11px;
+      border-radius:20px;
+      margin-bottom:11px;
+    }
+    .hero-title{
+      font-size:clamp(19px,5.2vw,23px);
+      font-weight:800;
+      line-height:1.18;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.85);
+      margin-bottom:15px;
+      min-height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-wrap:balance;
+    }
+    .key-box-row{
+      display:flex;
+      align-items:center;
+      width:100%;
+      margin-bottom:13px;
+    }
+    .decor-line{flex:1;height:1px;background:rgba(255,255,255,.82)}
+    .key-phrase-box{
+      border:1px solid rgba(255,255,255,.85);
+      padding:8px 11px;
+      font-size:10.5px;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#fff;
+      background:rgba(18,20,24,.58);
+      backdrop-filter:blur(5px);
+      -webkit-backdrop-filter:blur(5px);
+      line-height:1.35;
+      max-width:90%;
+      text-wrap:balance;
+    }
+    .details-card{
+      background:rgba(15,18,24,.72);
+      backdrop-filter:blur(9px);
+      -webkit-backdrop-filter:blur(9px);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:12px 14px;
+      width:100%;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+    }
+    .details-card ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .details-card li{
+      font-size:12.3px;
+      line-height:1.38;
+      color:#e2e8f0;
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+    }
+    .details-card li::before{content:"•";color:var(--gold);font-size:15px;line-height:1.15;flex:0 0 auto}
+    .dots-nav{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      max-width:220px;
+      gap:5px;
+      margin-top:13px;
+    }
+    .dot{
+      width:7px;height:7px;border-radius:50%;
+      border:0;padding:0;
+      background:rgba(255,255,255,.24);
+      cursor:pointer;
+      transition:background .2s,transform .2s;
+    }
+    .dot.active{background:var(--gold);transform:scale(1.3)}
+    .footer-bar{
+      padding:14px 20px calc(18px + env(safe-area-inset-bottom));
+      background:rgba(9,10,13,.95);
+      border-top:1px solid rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .footer-info{display:flex;flex-direction:column;min-width:0}
+    .footer-main{font-size:13px;font-weight:700;color:#fff}
+    .footer-sub{font-size:11px;color:var(--muted);margin-top:2px}
+    .cta-button{
+      background:linear-gradient(180deg,#f5252d,#d81119);
+      color:#fff;
+      padding:10px 18px;
+      border-radius:50px;
+      font-size:13px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      box-shadow:0 4px 14px rgba(230,28,36,.4);
+      flex-shrink:0;
+    }
+    .cta-button span{
+      background:#fff;color:var(--red);width:16px;height:16px;border-radius:50%;
+      display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800
+    }
+    .menu-panel{
+      position:absolute;inset:0;z-index:20;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(8,9,12,.91);
+      backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      opacity:0;visibility:hidden;transition:.25s ease;
+    }
+    .menu-panel.open{opacity:1;visibility:visible}
+    .menu-inner{display:flex;flex-direction:column;align-items:center;gap:18px}
+    .menu-inner button{
+      position:absolute;top:18px;right:18px;border:0;background:transparent;color:#fff;font-size:35px;cursor:pointer
+    }
+    .menu-inner a{color:#fff;text-decoration:none;font-weight:700;font-size:18px}
+    .menu-inner a:last-of-type{background:var(--red);padding:11px 18px;border-radius:999px}
+    @media(max-height:700px){
+      .slider-viewport{min-height:560px}
+      .header-bar{padding-top:15px}
+      .badge-pill{margin-bottom:7px}
+      .hero-title{margin-bottom:10px;min-height:42px;font-size:18px}
+      .key-box-row{margin-bottom:9px}
+      .details-card{padding:10px 12px}
+      .details-card li{font-size:11.5px}
+      .dots-nav{margin-top:9px}
+      .footer-bar{padding-top:11px;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+    }
+    @media(min-width:760px){
+      body{padding:24px}
+      .slider-viewport{height:min(820px,calc(100dvh - 48px))}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="slider-viewport" id="slider" aria-label="20 sebab memilih Pusat Tuisyen Potensi">
+    <img id="slideImg" class="slide-bg-img" src="" alt="">
+    <div class="slide-overlay"></div>
+
+    <header class="header-bar">
+      <a class="brand-wrap" href="#slide-1" aria-label="MyPotensi">
+        <div class="brand-mark" aria-hidden="true"><span>★</span></div>
+        <div class="brand-copy">
+          <strong><em>MY</em> POTENSI</strong>
+          <small>Reaching for the Stars</small>
+        </div>
+      </a>
+      <button class="hamburger-button" id="menuOpen" type="button" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <section class="center-hero" aria-live="polite">
+      <button class="nav-arrow-btn" id="prevBtn" type="button" aria-label="Slide sebelumnya">&lsaquo;</button>
+      <div class="hero-content">
+        <span id="slideBadge" class="badge-pill">SEBAB 01 / 20</span>
+        <h1 id="slideTitle" class="hero-title">GURU BERPENGALAMAN</h1>
+        <div class="key-box-row">
+          <div class="decor-line"></div>
+          <div id="slideKey" class="key-phrase-box">BELAJAR DENGAN GURU YANG BENAR-BENAR FAHAM</div>
+          <div class="decor-line"></div>
+        </div>
+        <div class="details-card"><ul id="slideBullets"></ul></div>
+        <div id="dotsWrap" class="dots-nav" aria-label="Navigasi slaid"></div>
+      </div>
+      <button class="nav-arrow-btn" id="nextBtn" type="button" aria-label="Slide seterusnya">&rsaquo;</button>
+    </section>
+
+    <footer class="footer-bar">
+      <div class="footer-info">
+        <div class="footer-main">Pusat Tuisyen Potensi</div>
+        <div class="footer-sub">Bimbingan Akademik Holistik (RM28)</div>
+      </div>
+      <a href="https://wa.me/601162540028" class="cta-button" target="_blank" rel="noopener">Daftar <span>&rsaquo;</span></a>
+    </footer>
+
+    <nav class="menu-panel" id="menuPanel" aria-hidden="true">
+      <div class="menu-inner">
+        <button id="menuClose" type="button" aria-label="Tutup menu">×</button>
+        <a href="#slide-1" data-slide="0">Mula</a>
+        <a href="#slide-5" data-slide="4">Jadual Fleksibel</a>
+        <a href="#slide-9" data-slide="8">Fokus Peperiksaan</a>
+        <a href="#slide-20" data-slide="19">Rekod Kejayaan</a>
+        <a href="https://wa.me/601162540028" target="_blank" rel="noopener">WhatsApp MyPotensi</a>
+      </div>
+    </nav>
+  </main>
+
+  <script>
+    const slidesData = [
+      {badge:"SEBAB 01 / 20",title:"GURU BERPENGALAMAN",key:"BELAJAR DENGAN GURU YANG BENAR-BENAR FAHAM",bullets:["Tenaga pengajar mahir, berkaliber dan berpengalaman luas.","Faham keperluan serta gaya belajar unik setiap pelajar.","Bimbingan kelas online lebih berkesan, mesra dan tepat."],img:"https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 02 / 20",title:"KELAS BERSAIZ KECIL",key:"LEBIH FOKUS, LEBIH MUDAH FAHAM",bullets:["Bilangan pelajar dalam bilik maya dihadkan untuk interaksi optimum.","Perhatian khusus dan tumpuan mendalam kepada setiap murid.","Pelajar bebas dan selesa bertanya soalan secara langsung."],img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 03 / 20",title:"MODUL BERKUALITI",key:"MODUL BERKUALITI, BELAJAR LEBIH TERARAH",bullets:["Modul digital disusun rapi mengikut silibus KPM terkini.","Kandungan padat, visual menarik dan senang difahami.","Membantu pelajar menguasai topik secara berstruktur."],img:"https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 04 / 20",title:"PENDEKATAN PERSONAL",key:"SETIAP PELAJAR UNIK, SETIAP BIMBINGAN KHAS",bullets:["Kaedah mengajar disesuaikan dengan tahap pemahaman pelajar.","Pelajar lemah dibimbing, pelajar cemerlang dicabar KBAT.","Pembelajaran maya diperjelas mengikut tempo anak anda."],img:"https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 05 / 20",title:"JADUAL FLEKSIBEL",key:"BELAJAR IKUT KESELESAAN MASA ANDA",bullets:["Pilihan slot petang, malam dan hujung minggu selepas sekolah.","Mesra ibu bapa yang sibuk tanpa perlu bergegas menghantar.","Rakaman kelas disediakan sekiranya terlepas sesi langsung."],img:"https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 06 / 20",title:"KELAS FIZIKAL & ONLINE",key:"DI MANA-MANA PUN BOLEH BELAJAR",bullets:["Kelas online interaktif dari rumah seluruh Malaysia.","Pilihan fizikal bersemuka yang selesa di pusat tuisyen.","Menjimatkan masa perjalanan harian ibu bapa di jalan raya."],img:"https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 07 / 20",title:"HARGA BERPATUTAN (RM28)",key:"KUALITI TINGGI, KOS MAMPU MILIK",bullets:["Pakej pembelajaran berbaloi serendah RM28.","Pilihan subjek fleksibel mengikut keperluan pelajar.","Pelaburan terbaik bagi memastikan keputusan cemerlang."],img:"https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 08 / 20",title:"TEKNIK MENJAWAB SOALAN",key:"BUKAN SEKADAR TAHU, TAHU CARA MENJAWAB",bullets:["Kuasai kata kunci mengikut skema pemarkahan.","Fokus kepada format penulisan jawapan tepat dan padat.","Bantu pelajar skor markah maksimum dalam peperiksaan."],img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 09 / 20",title:"FOKUS PEPERIKSAAN UTAMA",key:"SEDIA LEBIH AWAL, HADAPI DENGAN YAKIN",bullets:["Persediaan khusus UASA, SPM, IGCSE dan MUET.","Latihan berformat peperiksaan sebenar Lembaga Peperiksaan.","Pelajar lebih yakin dan tidak panik dalam dewan ujian."],img:"https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 10 / 20",title:"UJIAN & PENILAIAN BERKALA",key:"UKUR KEMAJUAN, PERBAIKI KELEMAHAN",bullets:["Ujian diagnostik dan kuiz diadakan dari semasa ke semasa.","Memantau kemajuan kefahaman pelajar dengan jelas.","Kelemahan segera dikenal pasti dan dibimbing serta-merta."],img:"https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 11 / 20",title:"LAPORAN PRESTASI",key:"IBU BAPA SENTIASA TAHU PERKEMBANGAN",bullets:["Ibu bapa dapat melihat perkembangan akademik anak.","Laporan kehadiran dan markah yang jelas dan telus.","Kerjasama erat antara pusat tuisyen, murid dan keluarga."],img:"https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 12 / 20",title:"NOTA RINGKAS & MUDAH FAHAM",key:"NOTA RINGKAS, ULANG KAJI PANTAS",bullets:["Nota e-modul padat, visual berwarna dan berformula.","Mempercepatkan ulangkaji saat akhir.","Mudah diingati sebelum melangkah ke dewan peperiksaan."],img:"https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 13 / 20",title:"LATIHAN INTENSIF SOALAN KBAT",key:"LATIHAN BANYAK, KEYAKINAN BERTAMBAH",bullets:["Latih-tubi soalan KBAT dan soalan peperiksaan lepas.","Pelajar terbiasa dengan jenis soalan beraras tinggi.","Meningkatkan keyakinan dan ketepatan masa menjawab."],img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 14 / 20",title:"SUASANA KONDUSIF DI RUMAH",key:"SUASANA SELESA, TUMPUAN LEBIH BAIK",bullets:["Persekitaran belajar tenang dan selesa dari bilik sendiri.","Mengurangkan keletihan fizikal berulang-alik harian.","Pelajar lebih fokus dan bertenaga menyerap pelajaran."],img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 15 / 20",title:"LOKASI & AKSES DIGITAL",key:"DEKAT DI SKRIN, BELAJAR LEBIH LANCAR",bullets:["Akses pembelajaran mudah dari seluruh pelusuk negara.","Pusat fizikal di Klang berdekatan sekolah dan komuniti.","Satu klik sahaja untuk terus menyertai bilik darjah."],img:"https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 16 / 20",title:"BIMBINGAN MOTIVASI",key:"MOTIVASI MEMBINA KEJAYAAN DIRI",bullets:["Menyuntik keyakinan dan disiplin tinggi dalam diri pelajar.","Menanam semangat belajar positif dan tidak mudah putus asa.","Pelajar lebih bersedia menghadapi cabaran akademik."],img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 17 / 20",title:"SEMINAR & PROGRAM INTENSIF",key:"PERSEDIAAN TAMBAHAN, PELUANG KEJAYAAN TINGGI",bullets:["Bengkel khas pecutan akhir menjelang peperiksaan besar.","Kupas topik ramalan dan tips pemarkahan.","Persediaan menyeluruh bersama ratusan calon lain."],img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 18 / 20",title:"KOMUNIKASI MESRA IBU BAPA",key:"KERJASAMA IBU BAPA, KEJAYAAN ANAK",bullets:["Talian sokongan terus melalui WhatsApp rasmi (+60 11-6254 0028).","Ibu bapa sentiasa dilibatkan dalam perkembangan anak.","Sokongan bersama bagi memastikan kejayaan cemerlang."],img:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 19 / 20",title:"PEMBELAJARAN INTERAKTIF",key:"BELAJAR SERONOK, INGATAN LEBIH KEKAL",bullets:["Kuiz gamifikasi atas talian dan aktiviti tidak membosankan.","Pelajar aktif berbincang dan bertanya di dalam kelas maya.","Pembelajaran menyeronokkan meningkatkan daya ingatan."],img:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1080&q=80"},
+      {badge:"SEBAB 20 / 20",title:"REKOD TERBUKTI & BERDAFTAR SAH",key:"PILIH POTENSI, CAPAI POTENSI TERBAIK",bullets:["Dipercayai oleh 800+ pelajar dengan 40+ tenaga pengajar pakar.","Berdaftar rasmi SSM (003672449-U) & Perakuan KPM (BZ2A0285).","Membimbing pelajar mencapai gred A dan potensi maksimum."],img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1080&q=80"}
+    ];
+
+    const slideImg=document.getElementById("slideImg");
+    const slideBadge=document.getElementById("slideBadge");
+    const slideTitle=document.getElementById("slideTitle");
+    const slideKey=document.getElementById("slideKey");
+    const bulletsList=document.getElementById("slideBullets");
+    const dotsWrap=document.getElementById("dotsWrap");
+    const slider=document.getElementById("slider");
+    const menuPanel=document.getElementById("menuPanel");
+    const menuOpen=document.getElementById("menuOpen");
+    const menuClose=document.getElementById("menuClose");
+
+    let currentIndex=0;
+    let touchStartX=0;
+
+    function preloadAdjacent(index){
+      [index-1,index+1].forEach(i=>{
+        const safe=(i+slidesData.length)%slidesData.length;
+        const img=new Image();
+        img.src=slidesData[safe].img;
+      });
+    }
+
+    function renderSlide(index,pushHash=true){
+      const data=slidesData[index];
+      slideImg.classList.add("is-changing");
+      const preload=new Image();
+      preload.onload=()=>{
+        slideImg.src=data.img;
+        slideImg.alt="";
+        requestAnimationFrame(()=>slideImg.classList.remove("is-changing"));
+      };
+      preload.onerror=()=>slideImg.classList.remove("is-changing");
+      preload.src=data.img;
+
+      slideBadge.textContent=data.badge;
+      slideTitle.textContent=data.title;
+      slideKey.textContent=data.key;
+      bulletsList.replaceChildren(...data.bullets.map(b=>{
+        const li=document.createElement("li");
+        li.textContent=b;
+        return li;
+      }));
+
+      [...dotsWrap.children].forEach((dot,i)=>{
+        dot.classList.toggle("active",i===index);
+        dot.setAttribute("aria-current",i===index?"true":"false");
+      });
+
+      if(pushHash) history.replaceState(null,"","#slide-"+(index+1));
+      preloadAdjacent(index);
+    }
+
+    function goTo(index){
+      currentIndex=(index+slidesData.length)%slidesData.length;
+      renderSlide(currentIndex);
+    }
+    function prevSlide(){goTo(currentIndex-1)}
+    function nextSlide(){goTo(currentIndex+1)}
+
+    slidesData.forEach((_,i)=>{
+      const dot=document.createElement("button");
+      dot.type="button";
+      dot.className="dot"+(i===0?" active":"");
+      dot.setAttribute("aria-label","Pergi ke slaid "+(i+1));
+      dot.setAttribute("aria-current",i===0?"true":"false");
+      dot.addEventListener("click",()=>goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    document.getElementById("prevBtn").addEventListener("click",prevSlide);
+    document.getElementById("nextBtn").addEventListener("click",nextSlide);
+
+    document.addEventListener("keydown",e=>{
+      if(e.key==="ArrowLeft") prevSlide();
+      if(e.key==="ArrowRight") nextSlide();
+      if(e.key==="Escape") setMenu(false);
+    });
+
+    slider.addEventListener("touchstart",e=>{
+      touchStartX=e.changedTouches[0].clientX;
+    },{passive:true});
+    slider.addEventListener("touchend",e=>{
+      const dx=e.changedTouches[0].clientX-touchStartX;
+      if(Math.abs(dx)>45) dx<0?nextSlide():prevSlide();
+    },{passive:true});
+
+    function setMenu(open){
+      menuPanel.classList.toggle("open",open);
+      menuPanel.setAttribute("aria-hidden",String(!open));
+      menuOpen.setAttribute("aria-expanded",String(open));
+    }
+    menuOpen.addEventListener("click",()=>setMenu(true));
+    menuClose.addEventListener("click",()=>setMenu(false));
+    menuPanel.addEventListener("click",e=>{
+      const a=e.target.closest("[data-slide]");
+      if(a){
+        e.preventDefault();
+        goTo(Number(a.dataset.slide));
+        setMenu(false);
+      } else if(e.target===menuPanel){
+        setMenu(false);
+      }
+    });
+
+    const match=location.hash.match(/^#slide-(\d+)$/);
+    if(match){
+      const n=Number(match[1]);
+      if(n>=1&&n<=slidesData.length) currentIndex=n-1;
+    }
+    renderSlide(currentIndex,false);
+  </script>
+</body>
+</html>
