@@ -51,16 +51,16 @@ button,a{font:inherit}
 .scene-8{background-image:linear-gradient(115deg,#27333d,#19242c 48%,#5a2a22)}
 .scene-9{background-image:linear-gradient(115deg,#162b3e,#242832 48%,#43331e)}
 .scene-10{background-image:linear-gradient(115deg,#263b35,#172326 46%,#4d3626)}
-.scene-11{background-image:linear-gradient(115deg,#263348,#1a2028 48%,#4f2d25)}
-.scene-12{background-image:linear-gradient(115deg,#3b2546,#172a31 48%,#4b3220)}
-.scene-13{background-image:linear-gradient(115deg,#203644,#18242a 48%,#4e2f25)}
-.scene-14{background-image:linear-gradient(115deg,#433228,#1c2528 48%,#27374a)}
-.scene-15{background-image:linear-gradient(115deg,#173342,#1c282d 48%,#514026)}
-.scene-16{background-image:linear-gradient(115deg,#243a35,#21272e 48%,#493025)}
-.scene-17{background-image:linear-gradient(115deg,#4b251f,#21232a 45%,#253b44)}
-.scene-18{background-image:linear-gradient(115deg,#2c3841,#202529 46%,#533026)}
-.scene-19{background-image:linear-gradient(115deg,#243947,#1a2429 44%,#49362c)}
-.scene-20{background-image:linear-gradient(115deg,#4a3020,#1a242c 48%,#173b45)}
+.scene-11{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-11.jpg")}
+.scene-12{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-12.jpg")}
+.scene-13{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-13.jpg")}
+.scene-14{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-14.jpg")}
+.scene-15{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-15.jpg")}
+.scene-16{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-16.jpg")}
+.scene-17{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-17.jpg")}
+.scene-18{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-18.jpg")}
+.scene-19{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-19.jpg")}
+.scene-20{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.30)),url("../assets/images/slide-20.jpg")}
 .content{
   position:relative;z-index:3;
   width:min(1120px,calc(100% - 150px));
