@@ -204,3 +204,15 @@ button,a{font:inherit}
   .points{font-size:clamp(.76rem,1.8vh,.98rem)}
   .visual-note{margin-top:10px}
 }
+
+/* Malaysian photographic backgrounds — slides 1-10 */
+.scene-1{background-image:url("../assets/backgrounds/slide01.webp")!important}
+.scene-2{background-image:url("../assets/backgrounds/slide02.webp")!important}
+.scene-3{background-image:url("../assets/backgrounds/slide03.webp")!important}
+.scene-4{background-image:url("../assets/backgrounds/slide04.webp")!important}
+.scene-5{background-image:url("../assets/backgrounds/slide05.webp")!important}
+.scene-6{background-image:url("../assets/backgrounds/slide06.webp")!important}
+.scene-7{background-image:url("../assets/backgrounds/slide07.webp")!important}
+.scene-8{background-image:url("../assets/backgrounds/slide08.webp")!important}
+.scene-9{background-image:url("../assets/backgrounds/slide09.webp")!important}
+.scene-10{background-image:url("../assets/backgrounds/slide10.webp")!important}
