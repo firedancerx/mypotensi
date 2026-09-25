@@ -363,6 +363,17 @@
 
     let currentIndex=0;
     let touchStartX=0;
+    let autoTimer=null;
+    const AUTO_ADVANCE_MS=5000;
+
+    function startAutoAdvance(){
+      clearInterval(autoTimer);
+      autoTimer=setInterval(()=>nextSlide(false),AUTO_ADVANCE_MS);
+    }
+
+    function resetAutoAdvance(){
+      startAutoAdvance();
+    }
 
     function preloadAdjacent(index){
       [index-1,index+1].forEach(i=>{
@@ -406,8 +417,8 @@
       currentIndex=(index+slidesData.length)%slidesData.length;
       renderSlide(currentIndex);
     }
-    function prevSlide(){goTo(currentIndex-1)}
-    function nextSlide(){goTo(currentIndex+1)}
+    function prevSlide(reset=true){goTo(currentIndex-1);if(reset) resetAutoAdvance()}
+    function nextSlide(reset=true){goTo(currentIndex+1);if(reset) resetAutoAdvance()}
 
     slidesData.forEach((_,i)=>{
       const dot=document.createElement("button");
@@ -415,7 +426,7 @@
       dot.className="dot"+(i===0?" active":"");
       dot.setAttribute("aria-label","Pergi ke slaid "+(i+1));
       dot.setAttribute("aria-current",i===0?"true":"false");
-      dot.addEventListener("click",()=>goTo(i));
+      dot.addEventListener("click",()=>{goTo(i);resetAutoAdvance();});
       dotsWrap.appendChild(dot);
     });
 
@@ -448,6 +459,7 @@
       if(a){
         e.preventDefault();
         goTo(Number(a.dataset.slide));
+        resetAutoAdvance();
         setMenu(false);
       } else if(e.target===menuPanel){
         setMenu(false);
@@ -459,7 +471,11 @@
       const n=Number(match[1]);
       if(n>=1&&n<=slidesData.length) currentIndex=n-1;
     }
+    document.addEventListener("visibilitychange",()=>{
+      if(document.hidden){clearInterval(autoTimer);}else{startAutoAdvance();}
+    });
     renderSlide(currentIndex,false);
+    startAutoAdvance();
   </script>
 </body>
 </html>
