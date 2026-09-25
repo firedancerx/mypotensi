@@ -125,6 +125,17 @@ const slider = document.getElementById("slider");
 const current = document.getElementById("current");
 let active = 0;
 let touchStartX = null;
+let autoTimer = null;
+const AUTO_ADVANCE_MS = 5000;
+
+function startAutoAdvance(){
+  clearInterval(autoTimer);
+  autoTimer = setInterval(()=>goTo(active+1), AUTO_ADVANCE_MS);
+}
+
+function resetAutoAdvance(){
+  startAutoAdvance();
+}
 
 slides.forEach((s,i)=>{
   const article = document.createElement("article");
@@ -154,19 +165,19 @@ function goTo(index, updateHash=true){
   }
 }
 
-document.querySelector(".next").addEventListener("click",()=>goTo(active+1));
-document.querySelector(".prev").addEventListener("click",()=>goTo(active-1));
+document.querySelector(".next").addEventListener("click",()=>{goTo(active+1);resetAutoAdvance();});
+document.querySelector(".prev").addEventListener("click",()=>{goTo(active-1);resetAutoAdvance();});
 
 document.addEventListener("keydown",e=>{
-  if(e.key==="ArrowRight" || e.key==="PageDown") goTo(active+1);
-  if(e.key==="ArrowLeft" || e.key==="PageUp") goTo(active-1);
+  if(e.key==="ArrowRight" || e.key==="PageDown"){goTo(active+1);resetAutoAdvance();}
+  if(e.key==="ArrowLeft" || e.key==="PageUp"){goTo(active-1);resetAutoAdvance();}
 });
 
 slider.addEventListener("touchstart",e=>{touchStartX=e.changedTouches[0].clientX},{passive:true});
 slider.addEventListener("touchend",e=>{
   if(touchStartX===null) return;
   const dx=e.changedTouches[0].clientX-touchStartX;
-  if(Math.abs(dx)>45) goTo(dx<0?active+1:active-1);
+  if(Math.abs(dx)>45){goTo(dx<0?active+1:active-1);resetAutoAdvance();}
   touchStartX=null;
 },{passive:true});
 
@@ -185,7 +196,7 @@ menu.addEventListener("click",e=>{
   if(!a) return;
   e.preventDefault();
   const n=Number(a.getAttribute("href").replace("#slide-",""));
-  if(Number.isFinite(n)) goTo(n-1);
+  if(Number.isFinite(n)){goTo(n-1);resetAutoAdvance();}
   setMenu(false);
 });
 
@@ -194,3 +205,9 @@ if(hashMatch){
   const n=Number(hashMatch[1]);
   if(n>=1 && n<=20) goTo(n-1,false);
 }
+
+
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){clearInterval(autoTimer);}else{startAutoAdvance();}
+});
+startAutoAdvance();
